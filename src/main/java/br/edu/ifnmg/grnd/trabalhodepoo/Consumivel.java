@@ -58,6 +58,7 @@ public class Consumivel extends ItemGeral {
         
         /* Essa linha é apenas um teste para ver se consigo dar commit */
         
+        /* olá mundo */
 	
 	
 	
