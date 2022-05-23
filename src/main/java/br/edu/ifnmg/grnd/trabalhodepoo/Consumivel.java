@@ -13,6 +13,9 @@ public class Consumivel extends ItemGeral {
 	private Integer duracao;
 	private ArrayList<Integer> alcance = new ArrayList<Integer>();
 
+        //<editor-fold defaultstate="collapsed" desc="Constructors">
+        
+
 	public Consumivel() {
 		this.duracao = 0;
 		this.alcance.add(0, 0);
@@ -25,6 +28,9 @@ public class Consumivel extends ItemGeral {
 		this.alcance.add(0, effective);
 		this.alcance.add(1, max);
 	}
+//</editor-fold>
+        //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
+        
 
 	public Integer getDuracao() {
 		return duracao;
@@ -42,7 +48,7 @@ public class Consumivel extends ItemGeral {
 		this.alcance.add(0, effective);
 		this.alcance.add(1, max);
 	}
-
+//</editor-fold>
 	@Override
 	public String toString() {
 		return super.toString() + "Usos: " + duracao + "\n" 
