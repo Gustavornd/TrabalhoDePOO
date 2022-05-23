@@ -55,6 +55,9 @@ public class Consumivel extends ItemGeral {
 			+ "Alcance: " + alcance.get(0) + "/" + alcance.get(1) + "\n";
 	}
 
+        
+        /* Essa linha é apenas um teste para ver se consigo dar commit */
+        
 	
 	
 	
