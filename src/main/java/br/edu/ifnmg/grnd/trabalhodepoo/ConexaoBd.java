@@ -33,7 +33,7 @@ public class ConexaoBd {
     // Inicialização de atributos estáticos.
     static {
         // Servidor Local
-        URL = "jdbc:mysql://127.0.0.1:3306/sistema"
+        URL = "jdbc:mysql://127.0.0.1:3306/rpginventario"
                 + "?useUnicode=true"
                 + "&useJDBCCompliantTimezoneShift=true"
                 + "&serverTimezone=UTC"
