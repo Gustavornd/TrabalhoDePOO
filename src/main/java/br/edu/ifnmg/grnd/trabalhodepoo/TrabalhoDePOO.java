@@ -5,6 +5,8 @@
 
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
+import java.util.HashSet;
+
 
 /**
  *
@@ -24,6 +26,16 @@ public class TrabalhoDePOO {
 	    
 	    Consumivel item4 = new Consumivel(1, 3, 5, 0.5, 1.00, 2, "Uma tocha para iluminar seu caminho", "Tocha", false);
 	    System.out.println(item4.toString() + "\nXXXXXXXXXXXXXXXXXXXXX\n");
+            
+            Inventario inv1 = new Inventario();
+            Transacao trans1 = new Transacao(50.00, "Mecanico de cavalo");
+            
+            inv1.setListaTrans(trans1);
+            
+            inv1.toStringTrans();
+        
+            
+            
 		    
 	    
 }}

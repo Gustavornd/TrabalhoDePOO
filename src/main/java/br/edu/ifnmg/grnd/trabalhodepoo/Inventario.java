@@ -36,8 +36,8 @@ public class Inventario {
         return listaTrans;
     }
 
-    public void setListaTrans(ArrayList<Transacao> listaTrans) {
-        this.listaTrans = listaTrans;
+    public void setListaTrans(Transacao aux) {
+        this.listaTrans.add(aux);
     }
 
     public ArrayList<ItemGeral> getListaItens() {
@@ -48,5 +48,10 @@ public class Inventario {
         this.listaItens = listaItens;
     }
       
+    public String toStringTrans(){
+        for (int i=0; i < listaTrans.size(); i++){
+            System.out.println(listaTrans.get(i).toString());}
+     return null;
+    }
     
 }
