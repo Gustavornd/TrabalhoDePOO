@@ -11,7 +11,7 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
  *
  * @author gusta
  */
-public class ItemGeral {
+public class ItemGeral extends Entidade{
 	private Double peso;
 	private Double preco;
 	private Integer quantidade;
@@ -90,6 +90,8 @@ public class ItemGeral {
 	}
 //</editor-fold>
 	
+	
+	
 	@Override
 	public String toString() {
 		return "Peso: " + peso + "\n" +
@@ -103,8 +105,5 @@ public class ItemGeral {
 	
 	
 	
-    
-    
-    
     
 }

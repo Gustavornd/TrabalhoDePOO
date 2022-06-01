@@ -10,10 +10,10 @@ public abstract class Entidade {
     private Long id;
 
     //<editor-fold defaultstate="collapsed" desc="Constructors">
-    public Entidade() {
+    protected Entidade() {
     }
 
-    public Entidade(Long id) {
+    protected Entidade(Long id) {
         this.id = id;
     }
     //</editor-fold>
