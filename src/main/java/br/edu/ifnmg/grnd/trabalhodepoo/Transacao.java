@@ -40,6 +40,6 @@ public class Transacao {
     @Override
  public String toString(){
      return " Valor = " + valor + 
-             "/n Descricao = " + descricao; 
+             "\n Descricao = " + descricao; 
  }   
 }

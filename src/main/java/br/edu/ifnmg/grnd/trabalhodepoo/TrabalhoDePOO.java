@@ -26,5 +26,13 @@ public class TrabalhoDePOO {
 	    System.out.println(item1.toString());
 	    
 	    new ItemGeralDAO().salvar(item1);
+            
+            Inventario inv1 = new Inventario();
+            ItemGeral mochila = new ItemGeral(2.00,10.00,1,"mochila para carregar equipamentos","mochila",true);
+            
+            inv1.addItens(item1);
+            inv1.listarItens();
+            
+            
     }
 }

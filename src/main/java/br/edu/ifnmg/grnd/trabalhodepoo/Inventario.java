@@ -36,7 +36,7 @@ public class Inventario {
         return listaTrans;
     }
 
-    public void setListaTrans(Transacao aux) {
+    public void addTrans(Transacao aux) {
         this.listaTrans.add(aux);
     }
 
@@ -44,14 +44,46 @@ public class Inventario {
         return listaItens;
     }
 
-    public void setListaItens(ArrayList<ItemGeral> listaItens) {
-        this.listaItens = listaItens;
+    public void addItens(ItemGeral aux) {
+        this.listaItens.add(aux);
     }
       
-    public String toStringTrans(){
+    public String listarTrans(){
         for (int i=0; i < listaTrans.size(); i++){
             System.out.println(listaTrans.get(i).toString());}
      return null;
     }
+    
+    public String listarItens(){
+        for(int i =0; i < listaItens.size(); i++){
+            System.out.println(listaItens.get(i).toString());
+        }
+        return null;
+    }
+    
+   
+    
+       
+    public ItemGeral buscarItem(String a){
+        for(int i = 0; i < listaItens.size(); i++){
+            if(listaItens.get(i).getNome() == a)
+                return listaItens.get(i);
+        }
+        System.out.println("Item nao encontrado.");
+        return null;
+    }
+
+   
+    
+    public void removeItem(String a){
+        listaItens.remove(buscarItem(a));
+        
+    }
+    
+    public void alterarItem(String a ){
+        
+        
+    }
+    
     
 }
