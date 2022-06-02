@@ -5,7 +5,6 @@
 
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
-import java.util.HashSet;
 
 
 /**
@@ -15,27 +14,17 @@ import java.util.HashSet;
 public class TrabalhoDePOO {
 
     public static void main(String[] args) {
-	    ItemGeral item = new ItemGeral(1.0, 10.00, 1, "Uma mochila de couro para seus itens.", "Mochila", false);
-	    System.out.println(item.toString() + "\nXXXXXXXXXXXXXXXXXXXXX\n");
+	
+	    ItemGeral item1 = new ItemGeral();
+	    item1.setPeso(3.5);
+	    item1.setPreco(30.0);
+	    item1.setNome("Braceletes de Prata");
+	    item1.setQuantidade(1);
+	    item1.setDescricao("Braceletes de prata dados para um guerreiro de honra.");
+	    item1.setEquipado(Boolean.TRUE);
 	    
-	    Armadura item2 = new Armadura ("Couro", 2, 6.0, 70.00, 1, "Uma armadura de couro.", "Peitoral de couro", true );    
-	    System.out.println(item2.toString() + "\nXXXXXXXXXXXXXXXXXXXXX\n");
+	    System.out.println(item1.toString());
 	    
-	    Arma item3 = new Arma(1, 6, 10, 20, 4.0, 200.00, 1, "Uma espada comum de metal.", "Espada de Metal", true);
-	    System.out.println(item3.toString() + "\nXXXXXXXXXXXXXXXXXXXXX\n");
-	    
-	    Consumivel item4 = new Consumivel(1, 3, 5, 0.5, 1.00, 2, "Uma tocha para iluminar seu caminho", "Tocha", false);
-	    System.out.println(item4.toString() + "\nXXXXXXXXXXXXXXXXXXXXX\n");
-            
-            Inventario inv1 = new Inventario();
-            Transacao trans1 = new Transacao(50.00, "Mecanico de cavalo");
-            
-            inv1.setListaTrans(trans1);
-            
-            inv1.toStringTrans();
-        
-            
-            
-		    
-	    
-}}
+	    new ItemGeralDAO().salvar(item1);
+    }
+}
