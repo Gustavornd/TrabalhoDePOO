@@ -1,2 +1,13 @@
+br\edu\ifnmg\grnd\trabalhodepoo\IDao.class
+br\edu\ifnmg\grnd\trabalhodepoo\Inventario.class
+br\edu\ifnmg\grnd\trabalhodepoo\Personagem.class
+br\edu\ifnmg\grnd\trabalhodepoo\Entidade.class
+br\edu\ifnmg\grnd\trabalhodepoo\ItemGeralDAO.class
+br\edu\ifnmg\grnd\trabalhodepoo\ItemGeral.class
+br\edu\ifnmg\grnd\trabalhodepoo\Dao.class
+br\edu\ifnmg\grnd\trabalhodepoo\Arma.class
+br\edu\ifnmg\grnd\trabalhodepoo\Armadura.class
+br\edu\ifnmg\grnd\trabalhodepoo\Transacao.class
+br\edu\ifnmg\grnd\trabalhodepoo\Consumivel.class
 br\edu\ifnmg\grnd\trabalhodepoo\TrabalhoDePOO.class
-br\edu\ifnmg\grnd\trabalhodepoo\ItensGerais.class
+br\edu\ifnmg\grnd\trabalhodepoo\ConexaoBd.class

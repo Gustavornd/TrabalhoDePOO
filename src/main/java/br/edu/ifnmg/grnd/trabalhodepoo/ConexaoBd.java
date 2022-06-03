@@ -23,11 +23,14 @@ public class ConexaoBd {
 	private static final String SENHA;
 
 	
-	static {
-	    
-	    URL = "jdbc:mysql://127.0.0.1:3306/rpginventario";
-	    USUARIO = "root";
-	    SENHA = "";
+	static{
+                           URL = "jdbc:mysql://127.0.0.1:3306/rpginventario"
+                                        + "?useUnicode=true"
+                                        + "&useJDBCCompliantTimezoneShift=true"
+                                        + "&serverTimezone=UTC"
+                                        + "&autoReconnect=true";
+                           USUARIO = "root";
+                           SENHA = "";
 	}
 
 	
