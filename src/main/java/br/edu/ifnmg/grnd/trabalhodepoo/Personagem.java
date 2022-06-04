@@ -1,22 +1,27 @@
 
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
-import java.util.ArrayList;
-
 /*
     Autor: Friedrich Naum
 */
 
 public class Personagem {
+    
+    private Integer id;
+    private String nome;
     private Double limPeso;
     private Double dinheiro;
     private Integer ca;
     private Inventario inventario;
-    private String nome;
 
 
    //<editor-fold defaultstate="collapsed" desc=" Constructor ">
-    public Personagem(Double limPeso, Double dinheiro, Integer ca, Inventario inventario, String nome) {
+    public Personagem()
+    {
+        
+    }
+    public Personagem(Integer id, String nome, Double limPeso, Double dinheiro, Integer ca, Inventario inventario) {
+        this.id = id;
         this.limPeso = limPeso;
         this.dinheiro = dinheiro;
         this.ca = ca;
@@ -26,7 +31,17 @@ public class Personagem {
 //</editor-fold>
     
     
+
     //<editor-fold defaultstate="collapsed" desc="Getterss And Settters">
+    
+    public Integer getId() {    
+        return id;
+    }
+    
+    public void setId(Integer id) {    
+        this.id = id;
+    }
+
     public Double getLimPeso() {
         return limPeso;
     }
