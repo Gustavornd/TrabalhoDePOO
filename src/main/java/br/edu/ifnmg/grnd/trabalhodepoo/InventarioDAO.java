@@ -64,4 +64,26 @@ public class InventarioDAO extends Dao< Inventario, Long> {
 
         return iv;
     }
+
+    public Inventario localizarPorId(Long id) {
+
+        try (PreparedStatement preparedStatement
+                = ConexaoBd.getConexao().prepareStatement(obterSentencaLocalizarPorId())) {
+
+            preparedStatement.setLong(1, (Long) id);
+
+            ResultSet resultSet
+                    = preparedStatement.executeQuery();
+
+            if (resultSet.next()) {
+
+                return extrairObjeto(resultSet);
+            }
+
+        } catch (Exception ex) {
+            System.out.println(">> " + ex);
+        }
+
+        return null;
+    }
 }
