@@ -33,6 +33,16 @@ public class TrabalhoDePOO {
             inv1.addItens(item1);
             inv1.listarItens();
             
+            //Testar Personagem
+            Inventario inv = new Inventario();
+            Personagem pr = new Personagem("Dylan",15.5f,20.0f,15,inv);
+            
+            new PersonagemDAO().salvar(pr);
+            new PersonagemDAO().obterSentencaInsert();
+            System.out.println("Personagem: " + pr.toString());
+            pr.calcPeso(); // Calculo Do Peso: Mostra o Limite de Peso e o quanto de peso esta sendo usado
+            pr.calcMoney(); // Mostra quanto gastou em suas transações e quanto ainda resta de Money
+            
             
     }
 }

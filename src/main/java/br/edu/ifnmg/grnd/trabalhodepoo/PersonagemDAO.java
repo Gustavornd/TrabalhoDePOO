@@ -17,25 +17,24 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
 
     /*
     CREATE TABLE personagem (
-        'id' integer NOT NULL,
-        `nome` varchar(60) NOT NULL,
-        `limPeso` Double NOT NULL,
-        `dinheiro` Double NOT NULL,
-        `ca` Integer NOT NULL,
-        `inventario` Inventario NOT NULL,
+        `id` int NOT NULL AUTO_INCREMENT,
+        `nome` varchar(200),
+        `limPeso` float,
+        `dinheiro` float,
+        `ca` int,
+        `inventarioid` int,
         PRIMARY KEY (`id`),
-        FOREIGN KEY ('inventario')
     ) ENGINE=MyISAM DEFAULT CHARSET=latin1
 -- */
     
     @Override
     public String obterSentencaInsert() {
-        return "insert into personagem (id, nome, limPeso, dinheiro, ca, inventario) values (?, ?, ?, ?, ?, ?);";
+        return "insert into personagem (nome, limPeso, dinheiro, ca, inventario) values (?, ?, ?, ?, ?);";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update personagem set id = ?, nome = ?, limPeso = ?, dinheiro = ?, ca = ?, inventario = ? where id = ?;";
+        return "update personagem set nome = ?, limPeso = ?, dinheiro = ?, ca = ?, inventario = ? where id = ?;";
     }
 
     @Override
@@ -52,10 +51,9 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Personagem e) {
         try {
-            pstmt.setInt(1, e.getId());
             pstmt.setString(1, e.getNome());
-            pstmt.setDouble(2, e.getLimPeso());
-            pstmt.setDouble(3, e.getDinheiro());
+            pstmt.setFloat(2, e.getLimPeso());
+            pstmt.setFloat(3, e.getDinheiro());
             pstmt.setInt(4,e.getCa());
             pstmt.setObject(5, e.getInventario());
 
@@ -73,10 +71,10 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
         Personagem pr = new Personagem();
 
         try {
-            pr.setId(resultSet.getInt("id"));
+            pr.setId(resultSet.getLong("id"));
             pr.setNome(resultSet.getString("nome"));
-            pr.setLimPeso(resultSet.getDouble("limPeso"));
-            pr.setDinheiro(resultSet.getDouble("dinheiro"));
+            pr.setLimPeso(resultSet.getFloat("limPeso"));
+            pr.setDinheiro(resultSet.getFloat("dinheiro"));
             pr.setCa(resultSet.getInt("ca"));
             pr.setInventario(resultSet.getObject("inventario", Inventario.class));
 

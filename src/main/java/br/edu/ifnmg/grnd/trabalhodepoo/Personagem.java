@@ -5,12 +5,11 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
     Autor: Friedrich Naum
 */
 
-public class Personagem {
+public class Personagem extends Entidade{
     
-    private Integer id;
     private String nome;
-    private Double limPeso;
-    private Double dinheiro;
+    private Float limPeso;
+    private Float dinheiro;
     private Integer ca;
     private Inventario inventario;
 
@@ -20,41 +19,31 @@ public class Personagem {
     {
         
     }
-    public Personagem(Integer id, String nome, Double limPeso, Double dinheiro, Integer ca, Inventario inventario) {
-        this.id = id;
+    public Personagem(String nome, Float limPeso, Float dinheiro, Integer ca, Inventario inventario) {
+        this.nome = nome;
         this.limPeso = limPeso;
         this.dinheiro = dinheiro;
         this.ca = ca;
         this.inventario = inventario;
-        this.nome = nome;
     }
 //</editor-fold>
-    
-    
+       
 
     //<editor-fold defaultstate="collapsed" desc="Getterss And Settters">
     
-    public Integer getId() {    
-        return id;
-    }
-    
-    public void setId(Integer id) {    
-        this.id = id;
-    }
-
-    public Double getLimPeso() {
+    public Float getLimPeso() {
         return limPeso;
     }
 
-    public void setLimPeso(Double limPeso) {
+    public void setLimPeso(Float limPeso) {
         this.limPeso = limPeso;
     }
 
-    public Double getDinheiro() {
+    public Float getDinheiro() {
         return dinheiro;
     }
 
-    public void setDinheiro(Double dinheiro) {
+    public void setDinheiro(Float dinheiro) {
         this.dinheiro = dinheiro;
     }
 
