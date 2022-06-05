@@ -8,10 +8,11 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
  *
  * @author lucas
  */
-public class Transacao {
-    
+public class Transacao extends Entidade {
+
     private Double valor;
     private String descricao;
+//<editor-fold defaultstate="collapsed" desc="Contructors">
 
     public Transacao() {
     }
@@ -20,6 +21,8 @@ public class Transacao {
         this.valor = valor;
         this.descricao = descricao;
     }
+//</editor-fold>
+//<editor-fold defaultstate="collapsed" desc="Getters & Setters">
 
     public Double getValor() {
         return valor;
@@ -36,10 +39,11 @@ public class Transacao {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+//</editor-fold>
 
     @Override
- public String toString(){
-     return " Valor = " + valor + 
-             "\n Descricao = " + descricao; 
- }   
+    public String toString() {
+        return " Valor = " + valor
+                + "\n Descricao = " + descricao;
+    }
 }

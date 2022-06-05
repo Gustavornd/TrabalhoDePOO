@@ -10,26 +10,26 @@ import java.util.ArrayList;
  *
  * @author lucas
  */
-public class Inventario {
-    
-      private Integer totalitems;
-      ArrayList<Transacao> listaTrans = new ArrayList<Transacao>();
-      ArrayList<ItemGeral> listaItens = new ArrayList<ItemGeral>();
+public class Inventario extends Entidade {
+
+    private Integer totalitens;
+    ArrayList<Transacao> listaTrans = new ArrayList<Transacao>();
+    ArrayList<ItemGeral> listaItens = new ArrayList<ItemGeral>();
 
     public Inventario() {
-        
+
     }
 
-    public Inventario(Integer totalitems) {
-        this.totalitems = totalitems;
+    public Inventario(Integer totalitens) {
+        this.totalitens = totalitens;
     }
 
     public Integer getTotalitems() {
-        return totalitems;
+        return totalitens;
     }
 
-    public void setTotalitems(Integer totalitems) {
-        this.totalitems = totalitems;
+    public void setTotalitems(Integer totalitens) {
+        this.totalitens = totalitens;
     }
 
     public ArrayList<Transacao> getListaTrans() {
@@ -47,43 +47,34 @@ public class Inventario {
     public void addItens(ItemGeral aux) {
         this.listaItens.add(aux);
     }
-      
-    public String listarTrans(){
-        for (int i=0; i < listaTrans.size(); i++){
-            System.out.println(listaTrans.get(i).toString());}
-     return null;
+
+    public String listarTrans() {
+        for (int i = 0; i < listaTrans.size(); i++) {
+            System.out.println(listaTrans.get(i).toString());
+        }
+        return null;
     }
-    
-    public String listarItens(){
-        for(int i =0; i < listaItens.size(); i++){
+
+    public String listarItens() {
+        for (int i = 0; i < listaItens.size(); i++) {
             System.out.println(listaItens.get(i).toString());
         }
         return null;
     }
-    
-   
-    
-       
-    public ItemGeral buscarItem(String a){
-        for(int i = 0; i < listaItens.size(); i++){
-            if(listaItens.get(i).getNome() == a)
+
+    public ItemGeral buscarItem(String a) {
+        for (int i = 0; i < listaItens.size(); i++) {
+            if (listaItens.get(i).getNome() == a) {
                 return listaItens.get(i);
+            }
         }
         System.out.println("Item nao encontrado.");
         return null;
     }
 
-   
-    
-    public void removeItem(String a){
+    public void removeItem(String a) {
         listaItens.remove(buscarItem(a));
-        
+
     }
-    
-    public void alterarItem(String a ){
-        
-        
-    }
-    
-    
+
 }
