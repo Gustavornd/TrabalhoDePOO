@@ -5,6 +5,7 @@
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
 /**
+ * Entidade que representa uma Transacao.
  *
  * @author lucas
  */

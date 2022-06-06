@@ -11,11 +11,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
  *
  * @author lucas
  */
 public class InventarioDAO extends Dao< Inventario, Long> {
 
+    /*
+    CREATE TABLE `inventario` (
+        `id` int AUTO_INCREMENT,
+        `totalitens` int,
+        PRIMARY KEY (`id`)
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+-- */
     @Override
     public String obterSentencaInsert() {
         return "insert into inventario (totalitens) values (?);";
@@ -36,6 +45,13 @@ public class InventarioDAO extends Dao< Inventario, Long> {
         return "select id, totalitens from inventario where excluido = false;";
     }
 
+    /**
+     * Substitui elementos variáveis na SQL preparada a partir do objeto de
+     * referência recebido
+     *
+     * @param pstmt Consulta preparada com valores ausentes
+     * @param e Objeto com dados relevantes para a consulta
+     */
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Inventario e) {
         try {
@@ -51,6 +67,13 @@ public class InventarioDAO extends Dao< Inventario, Long> {
         }
     }
 
+    /**
+     * Extrai um objeto Inventario do resultado gerado pela consulta
+     *
+     * @param resultSet Registro recuperado do banco de dados
+     * @return Inventario equivalente ao registro recebido
+     */
+
     @Override
     public Inventario extrairObjeto(ResultSet resultSet) {
         Inventario iv = new Inventario();
@@ -64,6 +87,5 @@ public class InventarioDAO extends Dao< Inventario, Long> {
 
         return iv;
     }
-    
- 
+
 }

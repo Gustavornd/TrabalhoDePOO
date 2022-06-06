@@ -11,11 +11,21 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
  *
  * @author lucas
  */
 public class TransacaoDAO extends Dao<Transacao, Long> {
 
+    /*
+    CREATE TABLE `transacao` (
+        `valor` float,
+        `descricao` varchar(255),
+        `id` int AUTO_INCREMENT,
+        PRIMARY KEY (`id`),
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+-- */
     @Override
     public String obterSentencaInsert() {
         return "insert into transacao (valor, descricao) values (?, ?);";
@@ -36,6 +46,13 @@ public class TransacaoDAO extends Dao<Transacao, Long> {
         return "select id, valor, descricao from transacao where excluido = false;";
     }
 
+    /**
+     * Substitui elementos variáveis na SQL preparada a partir do objeto de
+     * referência recebido
+     *
+     * @param pstmt Consulta preparada com valores ausentes
+     * @param e Objeto com dados relevantes para a consulta
+     */
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Transacao e) {
         try {
@@ -51,6 +68,12 @@ public class TransacaoDAO extends Dao<Transacao, Long> {
         }
     }
 
+    /**
+     * Extrai um objeto Transacao do resultado gerado pela consulta
+     *
+     * @param resultSet Registro recuperado do banco de dados
+     * @return Transacao equivalente ao registro recebido
+     */
     @Override
     public Transacao extrairObjeto(ResultSet resultSet) {
 

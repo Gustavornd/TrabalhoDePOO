@@ -1,24 +1,23 @@
-
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
 /*
-    Autor: Friedrich Naum
-*/
+  Entidade que representa um Personagem.
 
-public class Personagem extends Entidade{
-    
+    Autor: Friedrich Naum
+ */
+public class Personagem extends Entidade {
+
     private String nome;
     private Double limPeso;
     private Double dinheiro;
     private Integer ca;
     private Inventario inventario;
 
+    //<editor-fold defaultstate="collapsed" desc=" Constructor ">
+    public Personagem() {
 
-   //<editor-fold defaultstate="collapsed" desc=" Constructor ">
-    public Personagem()
-    {
-        
     }
+
     public Personagem(String nome, Double limPeso, Double dinheiro, Integer ca, Inventario inventario) {
         this.nome = nome;
         this.limPeso = limPeso;
@@ -27,10 +26,8 @@ public class Personagem extends Entidade{
         this.inventario = inventario;
     }
 //</editor-fold>
-       
 
     //<editor-fold defaultstate="collapsed" desc="Getterss And Settters">
-    
     public Double getLimPeso() {
         return limPeso;
     }
@@ -70,43 +67,42 @@ public class Personagem extends Entidade{
     public void setNome(String nome) {
         this.nome = nome;
     }
-    
+
 //</editor-fold>
-    
-    public void calcCA(){
+    // Realiza o calculo do coeficiente de armadura atual
+    public void calcCA() {
         Armadura ja = new Armadura();
-        if(ja.getEquipado()== true){
+        if (ja.getEquipado() == true) {
             this.ca += ja.getDefesa();
         }
         System.out.println(" CA Atual = " + this.ca);
     }
-    
-    public void calcPeso(){
+
+    // Realiza o calculo do Peso, do limite do peso e o quanto falta para atingir esse limite.
+    // Tambem verifica se o personagem ja ultrapassou ou esta perto de ultrapassar esse limite.
+    public void calcPeso() {
         int peso = 0;
-            for(int j =0; j<this.inventario.listaItens.size();j++)
-            {
-                      peso += this.inventario.listaItens.get(j).getPeso();
-                      if(this.limPeso<peso)
-                      {
-                          System.out.println("Vocé está pesado!! Deslocamento e Velocidade do Personagem caiu Drásticamente");
-                      }
-                      if(this.limPeso == peso)
-                      {
-                          System.out.println("Seu peso está quase ultrapassando o limite de peso!!");
-                      }
+        for (int j = 0; j < this.inventario.listaItens.size(); j++) {
+            peso += this.inventario.listaItens.get(j).getPeso();
+            if (this.limPeso < peso) {
+                System.out.println("Vocé está pesado!! Deslocamento e Velocidade do Personagem caiu Drásticamente");
             }
-            System.out.println("Peso Atual: "+ peso + "\nLimite do Peso: " + this.limPeso + "\nFalta " + (this.limPeso-peso)+ " para chegar ao limite");
+            if (this.limPeso == peso) {
+                System.out.println("Seu peso está quase ultrapassando o limite de peso!!");
+            }
         }
-    
-    public void calcMoney(){
-            int money = 0;
-            for(int i = 0; i< this.inventario.listaTrans.size();i++)
-            {
-                      money += this.inventario.listaTrans.get(i).getValor();                      
-            }
-            System.out.println("Gasto Atual: "+ money + "\nDinheiro Total: " + this.dinheiro + "\nDinheiro Total Agora " + (this.dinheiro - money));
+        System.out.println("Peso Atual: " + peso + "\nLimite do Peso: " + this.limPeso + "\nFalta " + (this.limPeso - peso) + " para chegar ao limite");
     }
-    
+
+    //Realiza o calculo do dinheiro total, do gasto e a quantidade restante apos o gasto.
+    public void calcMoney() {
+        int money = 0;
+        for (int i = 0; i < this.inventario.listaTrans.size(); i++) {
+            money += this.inventario.listaTrans.get(i).getValor();
+        }
+        System.out.println("Gasto Atual: " + money + "\nDinheiro Total: " + this.dinheiro + "\nDinheiro Total Agora " + (this.dinheiro - money));
+    }
+
     @Override
     public String toString() {
         return "Personagem{" + "limPeso=" + limPeso + ", dinheiro=" + dinheiro + ", ca=" + ca + ", inventario=" + inventario + ", nome=" + nome + '}';

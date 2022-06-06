@@ -7,6 +7,7 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 import java.util.ArrayList;
 
 /**
+ * Entidade que representa um Inventario.
  *
  * @author lucas
  */
@@ -65,7 +66,7 @@ public class Inventario extends Entidade {
 
     public ItemGeral buscarItem(String a) {
         for (int i = 0; i < listaItens.size(); i++) {
-            if (listaItens.get(i).getNome().equals(a) ) {
+            if (listaItens.get(i).getNome().equals(a)) {
                 return listaItens.get(i);
             }
         }
@@ -82,8 +83,5 @@ public class Inventario extends Entidade {
     public String toString() {
         return "Inventario{" + "totalitens=" + totalitens + '}';
     }
-    
-    
 
 }
-
