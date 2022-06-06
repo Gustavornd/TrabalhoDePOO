@@ -45,6 +45,17 @@ public class TransacaoDAO extends Dao<Transacao, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, valor, descricao from transacao where excluido = false;";
     }
+    
+    @Override
+    public String obterSentencaMoverParaLixeira(){
+        return "update transacao set excluido = TRUE where id = ?;";
+    }
+    
+    @Override
+     public String getDeclaracaoDelete() {
+         return "delete from transacao where id = ?";
+     }
+
 
     /**
      * Substitui elementos variáveis na SQL preparada a partir do objeto de

@@ -14,8 +14,9 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 public class TrabalhoDePOO {
 
     public static void main(String[] args) {
-	Transacao trans = new TransacaoDAO().localizarPorId(1L);
-                    System.out.println(trans.toString());
+	Transacao trans1 = new TransacaoDAO().localizarPorId(2L);
+                  System.out.println(trans1.toString());
+                   new TransacaoDAO().moverParaLixeira(trans1);
                   
                   
         

@@ -3,9 +3,12 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * Implementação de operações gerais e definição de operações específicas para
@@ -135,6 +138,65 @@ public abstract class Dao<E, K>
         // Retorna todos os registros extraídos
         return resposta;
     }
+    
+    
+    /**
+     *
+     * @param o
+     * @return
+     */
+    @Override
+    public Boolean excluir(E o) {
+        // Recupera a identidade (chave primária) do objeto a ser excluído
+        Long id = ((Entidade) o).getId();
+
+        // Se há uma identidade válida...
+        if (id != null && id != 0) {
+            // ... tenta preparar uma sentença SQL para a conexão já estabelecida
+            try (PreparedStatement pstmt
+                    = ConexaoBd.getConexao().prepareStatement(
+                            // Sentença SQL para exclusão de registros
+                            getDeclaracaoDelete())) {
+
+                // Prepara a declaração com os dados do objeto passado
+                ajustarIdDeclaracao(pstmt, (K) id);
+
+                // Executa o comando SQL
+                pstmt.executeUpdate();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            return false;
+        }
+
+        return true;
+    }
+
+    /**
+     * Insere o valor da chave primária na senteça SQL específica para seu uso.
+     *
+     * @param pstmt Declaração previamente preparada.
+     * @param id Chave primária a ser inserida na sentença SQL.
+     */
+    public void ajustarIdDeclaracao(PreparedStatement pstmt, K id) {
+        try {
+            // Caso id seja um Long, emprega setLong()
+            if(id instanceof Long) {
+                // Cast é requerido porque K não é um tipo previamente definido
+                pstmt.setLong(1, (Long) id);
+            } else {
+                // Caso id seja um Integer, emprega setLong()
+                pstmt.setInt(1, (Integer) id);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 
     /**
      * Sentença SQL específica para cada tipo de objeto a ser persistido no
@@ -161,7 +223,17 @@ public abstract class Dao<E, K>
     public abstract String obterSentencaLocalizarPorId();
     
     public abstract String obterSentencaLocalizarTodos();
+    
+    public abstract String obterSentencaMoverParaLixeira();
 
+    /**
+     * Recupera a sentença SQL específica para a exclusão da entidade no banco
+     * de dados.
+     *
+     * @return Sentença SQl para exclusão.
+     */
+    public abstract String getDeclaracaoDelete();
+    
     /**
      * Monta a declaração SQL com os valores contidos no objeto recebido.
      *
@@ -171,5 +243,39 @@ public abstract class Dao<E, K>
     public abstract void montarDeclaracao(PreparedStatement pstmt, E e);
 
     public abstract E extrairObjeto(ResultSet resultSet);
+    
+    public boolean moverParaLixeira(E e) {
+             
+              // Recupera a identidade (chave primária) do objeto a ser excluído
+        Long id = ((Entidade) e).getId();
+
+        // Se há uma identidade válida...
+        if (id != null && id != 0) {
+            // ... tenta preparar uma sentença SQL para a conexão já estabelecida
+            try (PreparedStatement pstmt
+                    = ConexaoBd.getConexao().prepareStatement(
+                            // Sentença SQL para exclusão de registros
+                            obterSentencaMoverParaLixeira())) {
+
+                // Prepara a declaração com os dados do objeto passado
+                ajustarIdDeclaracao(pstmt, (K) id);
+
+                // Executa o comando SQL
+                pstmt.executeUpdate();
+
+            } catch (Exception o) {
+                o.printStackTrace();
+            }
+
+        } else {
+            return false;
+        }
+
+        return true;
+             
+    }
+    
+    
+
 
 }

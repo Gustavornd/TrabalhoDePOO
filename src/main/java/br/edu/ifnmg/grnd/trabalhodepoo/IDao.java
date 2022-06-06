@@ -14,4 +14,5 @@ public interface IDao<E, K> {
      * @return Chave primária da entidade salva
      */
     public K salvar(E e);
+    public Boolean excluir(E o);
 }

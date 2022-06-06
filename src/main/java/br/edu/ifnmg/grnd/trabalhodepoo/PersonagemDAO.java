@@ -41,6 +41,12 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, nome, limPeso, dinheiro, ca, inventario from personagem where excluido = false;";
     }
+    
+    @Override
+    public String getDeclaracaoDelete() {
+        return "delete from personagem where id = ?";
+    }
+   
 
     /**
      * Substitui elementos variáveis na SQL preparada a partir do objeto de
@@ -49,6 +55,7 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
      * @param pstmt Consulta preparada com valores ausentes
      * @param e Objeto com dados relevantes para a consulta
      */
+    
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Personagem e) {
         try {
@@ -92,5 +99,12 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
 
         return pr;
     }
+
+    @Override
+    public String obterSentencaMoverParaLixeira() {
+        return "update personagem set excluido = TRUE where id = ?;";
+    }
+
+
 
 }
