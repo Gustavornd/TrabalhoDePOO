@@ -49,17 +49,16 @@ public class ConsumivelDAO extends Dao<Consumivel, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, duracao, alcance_effective, alcance_max, idItemGeral from consumivel where excluido = false;";
     }
-    
+
     @Override
     public String getDeclaracaoDelete() {
         return "delete from consumivel where id = ?";
     }
-    
+
     @Override
     public String obterSentencaMoverParaLixeira() {
         return "update consumivel set excluido = TRUE where id = ?;";
     }
-
 
     /**
      * Substitui elementos variáveis na SQL preparada a partir do objeto de

@@ -9,48 +9,45 @@ package br.edu.ifnmg.grnd.entidade;
  * @author gusta
  */
 public class Armadura extends ItemGeral {
-	private String tipo;
-	private Integer defesa;
-	
-	//<editor-fold defaultstate="collapsed" desc="Constructor">
 
-	public Armadura() {
-		this.tipo = null;
-		this.defesa = 0;
-	}
-	
+    private String tipo;
+    private Integer defesa;
 
-	public Armadura(String tipo, Integer defesa, Double peso, Double preco, Integer quantidade, String descricao, String nome, Boolean equipado) {
-		super(peso, preco, quantidade, descricao, nome, equipado);
-		this.tipo = tipo;
-		this.defesa = defesa;
-	}
-	//</editor-fold>
+    //<editor-fold defaultstate="collapsed" desc="Constructor">
+    public Armadura() {
+        this.tipo = null;
+        this.defesa = 0;
+    }
 
-	//<editor-fold defaultstate="collapsed" desc="Getters and Setters">
-	
-	public String getTipo() {
-		return tipo;
-	}
+    public Armadura(String tipo, Integer defesa, Double peso, Double preco, Integer quantidade, String descricao, String nome, Boolean equipado) {
+        super(peso, preco, quantidade, descricao, nome, equipado);
+        this.tipo = tipo;
+        this.defesa = defesa;
+    }
+    //</editor-fold>
 
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
+    //<editor-fold defaultstate="collapsed" desc="Getters and Setters">
+    public String getTipo() {
+        return tipo;
+    }
 
-	public Integer getDefesa() {
-		return defesa;
-	}
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 
-	public void setDefesa(Integer defesa) {
-		this.defesa = defesa;
-	}
-	//</editor-fold>
-	
-	@Override
-	public String toString() {
-		return super.toString() + "Tipo: " + tipo + "\n" +
-			"Defesa: " + defesa + "\n"; 
-	}
-	
-	
+    public Integer getDefesa() {
+        return defesa;
+    }
+
+    public void setDefesa(Integer defesa) {
+        this.defesa = defesa;
+    }
+    //</editor-fold>
+
+    @Override
+    public String toString() {
+        return super.toString() + "Tipo: " + tipo + "\n"
+                + "Defesa: " + defesa + "\n";
+    }
+
 }

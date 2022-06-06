@@ -45,12 +45,12 @@ public class InventarioDAO extends Dao< Inventario, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, totalitens from inventario where excluido = false;";
     }
-    
+
     @Override
     public String getDeclaracaoDelete() {
         return "delete from inventario where id = ?";
     }
-    
+
     @Override
     public String obterSentencaMoverParaLixeira() {
         return "update inventario set excluido = TRUE where id = ?;";
@@ -84,7 +84,6 @@ public class InventarioDAO extends Dao< Inventario, Long> {
      * @param resultSet Registro recuperado do banco de dados
      * @return Inventario equivalente ao registro recebido
      */
-
     @Override
     public Inventario extrairObjeto(ResultSet resultSet) {
         Inventario iv = new Inventario();

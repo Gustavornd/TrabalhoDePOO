@@ -17,10 +17,13 @@ public class Inventario extends Entidade {
     ArrayList<Transacao> listaTrans = new ArrayList<Transacao>();
     ArrayList<ItemGeral> listaItens = new ArrayList<ItemGeral>();
 
+    //<editor-fold defaultstate="collapsed" desc="Contrutores">
     public Inventario() {
 
     }
+    //</editor-fold>
 
+    //<editor-fold defaultstate="collapsed" desc="Getters & Setters">
     public Inventario(Integer totalitens) {
         this.totalitens = totalitens;
     }
@@ -44,9 +47,8 @@ public class Inventario extends Entidade {
     public void setListaItens(ArrayList<ItemGeral> listaItens) {
         this.listaItens = listaItens;
     }
-    
- 
 
+    //</editor-fold>
     // Adiciona uma transacao
     public void addTrans(Transacao aux) {
         this.listaTrans.add(aux);

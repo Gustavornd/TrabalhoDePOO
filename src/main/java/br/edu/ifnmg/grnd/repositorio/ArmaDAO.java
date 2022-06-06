@@ -50,19 +50,16 @@ public class ArmaDAO extends Dao<Arma, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, alcance_effective, alcance_max, dano_roll, dano_dice, idItemGeral from arma where excluido = false;";
     }
-    
-    
-    
+
     @Override
     public String getDeclaracaoDelete() {
         return "delete from arma where id = ?";
-     }
-    
+    }
+
     @Override
     public String obterSentencaMoverParaLixeira() {
         return "update arma set excluido = TRUE where id = ?;";
     }
-    
 
     /**
      * Substitui elementos variáveis na SQL preparada a partir do objeto de

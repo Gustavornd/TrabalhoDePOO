@@ -1,9 +1,8 @@
-
 package br.edu.ifnmg.grnd.repositorio;
 
 /**
- * Definição de métodos obrigatórios nas classes DAO.
- * autores: Gustavo, Lucas e Naum
+ * Definição de métodos obrigatórios nas classes DAO. autores: Gustavo, Lucas e
+ * Naum
  */
 public interface IDao<E, K> {
 
@@ -14,5 +13,6 @@ public interface IDao<E, K> {
      * @return Chave primária da entidade salva
      */
     public K salvar(E e);
+
     public Boolean excluir(E o);
 }

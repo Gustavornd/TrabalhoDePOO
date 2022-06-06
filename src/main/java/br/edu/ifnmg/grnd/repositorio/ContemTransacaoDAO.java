@@ -14,10 +14,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
  *
  * @author gusta
  */
+
 public class ContemTransacaoDAO {
+    
+    /*
+    CREATE TABLE arma (
+            idInventario int,
+            idTransacao int
+    ); ENGINE=MyISAM DEFAULT CHARSET=latin1
+-- */
     
     public void salvar(ContemTransacao o){
        ContemTransacao contemtrans= localizarPorId(o.getInventarioID(), o.getTransacaoID());

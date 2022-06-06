@@ -14,18 +14,28 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
  *
  * @author gusta
  */
 public class ContemItemDAO {
-    public void salvar(ContemItem o){
-       ContemItem contemItem = localizarPorId(o.getInventarioID(), o.getItemGeralID());
-       
-       // Novo registro
+    
+      /*
+    CREATE TABLE arma (
+            idInventario int,
+            idItem int
+    ); ENGINE=MyISAM DEFAULT CHARSET=latin1
+-- */
+
+    public void salvar(ContemItem o) {
+        ContemItem contemItem = localizarPorId(o.getInventarioID(), o.getItemGeralID());
+
+        // Novo registro
         if (contemItem == null) {
 
             // try-with-resources libera recurso ao final do bloco (PreparedStatement)
-            try (PreparedStatement pstmt
+            try ( PreparedStatement pstmt
                     = ConexaoBd.getConexao().prepareStatement(
                             // Sentença SQL para inserção de registros
                             obterDeclaracaoInsert())) {
@@ -42,7 +52,7 @@ public class ContemItemDAO {
             }
         }
     }
-            
+
     /**
      * Exclui o registro do objeto no banco de dados.
      *
@@ -60,7 +70,7 @@ public class ContemItemDAO {
         if (inventarioID != null && inventarioID != 0
                 && itemGeralID != null && itemGeralID != 0) {
             // ... tenta preparar uma sentença SQL para a conexão já estabelecida
-            try (PreparedStatement pstmt
+            try ( PreparedStatement pstmt
                     = ConexaoBd.getConexao().prepareStatement(
                             // Sentença SQL para exclusão de registros
                             getDeclaracaoDelete())) {
@@ -95,7 +105,7 @@ public class ContemItemDAO {
         ContemItem objeto = null;
 
         // Tenta preparar uma sentença SQL para a conexão já estabelecida
-        try (PreparedStatement pstmt
+        try ( PreparedStatement pstmt
                 = ConexaoBd.getConexao().prepareStatement(
                         // Sentença SQL para busca por chave primária
                         getDeclaracaoSelectPorId())) {
@@ -121,7 +131,6 @@ public class ContemItemDAO {
         return objeto;
     }
 
-    
     /**
      * Recupera a sentença SQL específica para a inserção da entidade no banco
      * de dados.
@@ -159,13 +168,12 @@ public class ContemItemDAO {
      * @return Sentença SQl para busca por entidades.
      */
     public String getDeclaracaoSelectTodosItensPorInventario() {
-        return "SELECT peso, preco, nome, quantidade, descricao, equipado " 
+        return "SELECT peso, preco, nome, quantidade, descricao, equipado "
                 + "FROM itemgeral a "
                 + "INNER JOIN contemitem al "
                 + "ON a.id = al.idItemGeral "
                 + "WHERE al.idInventario  = ?;";
     }
-
 
     /**
      * Recupera a sentença SQL específica para a exclusão da entidade no banco
@@ -194,7 +202,6 @@ public class ContemItemDAO {
             e.printStackTrace();
         }
 
-
         return contemItem;
     }
 
@@ -208,9 +215,7 @@ public class ContemItemDAO {
      */
     public List<ContemItem> extrairObjetos(ResultSet resultSet) {
 
-
         ArrayList<ContemItem> listaItens = new ArrayList<>();
-
 
         try {
             while (resultSet.next()) {
@@ -220,9 +225,7 @@ public class ContemItemDAO {
             Logger.getLogger(ContemItemDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
         return listaItens;
     }
-    
-    
+
 }

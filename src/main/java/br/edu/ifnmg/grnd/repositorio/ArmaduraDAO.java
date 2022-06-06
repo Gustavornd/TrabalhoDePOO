@@ -48,17 +48,16 @@ public class ArmaduraDAO extends Dao<Armadura, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, tipo, defesa, idItemGeral from armadura where excluido = false;";
     }
-    
+
     @Override
     public String getDeclaracaoDelete() {
         return "delete from armadura where id = ?";
     }
-    
+
     @Override
     public String obterSentencaMoverParaLixeira() {
         return "update armadura set excluido = TRUE where id = ?;";
     }
-
 
     /**
      * Substitui elementos variáveis na SQL preparada a partir do objeto de
@@ -89,7 +88,6 @@ public class ArmaduraDAO extends Dao<Armadura, Long> {
      * @param resultSet Registro recuperado do banco de dados
      * @return Arma equivalente ao registro recebido
      */
-
     @Override
     public Armadura extrairObjeto(ResultSet resultSet) {
         Armadura e = new Armadura();

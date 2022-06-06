@@ -1,4 +1,3 @@
-
 package br.edu.ifnmg.grnd.repositorio;
 
 import br.edu.ifnmg.grnd.entidade.Entidade;
@@ -114,21 +113,21 @@ public abstract class Dao<E, K>
         // Caso não haja registro com a id fornecida
         return null;
     }
-    
+
     public List<E> localizarTodos() {
-        
+
         ArrayList<E> resposta = new ArrayList<>();
-        
+
         try ( PreparedStatement preparedStatement
                 = ConexaoBd.getConexao().prepareStatement(obterSentencaLocalizarTodos())) {
-            
+
             // Recupera os dados da consulta
             ResultSet resultSet
                     = preparedStatement.executeQuery();
 
             // Iterar sobre todos os registros
             while (resultSet.next()) {
-                
+
                 // Extrai e adionar "próximo" objeto
                 resposta.add(extrairObjeto(resultSet));
             }
@@ -140,8 +139,7 @@ public abstract class Dao<E, K>
         // Retorna todos os registros extraídos
         return resposta;
     }
-    
-    
+
     /**
      *
      * @param o
@@ -155,7 +153,7 @@ public abstract class Dao<E, K>
         // Se há uma identidade válida...
         if (id != null && id != 0) {
             // ... tenta preparar uma sentença SQL para a conexão já estabelecida
-            try (PreparedStatement pstmt
+            try ( PreparedStatement pstmt
                     = ConexaoBd.getConexao().prepareStatement(
                             // Sentença SQL para exclusão de registros
                             getDeclaracaoDelete())) {
@@ -186,19 +184,18 @@ public abstract class Dao<E, K>
     public void ajustarIdDeclaracao(PreparedStatement pstmt, K id) {
         try {
             // Caso id seja um Long, emprega setLong()
-            if(id instanceof Long) {
+            if (id instanceof Long) {
                 // Cast é requerido porque K não é um tipo previamente definido
                 pstmt.setLong(1, (Long) id);
             } else {
                 // Caso id seja um Integer, emprega setLong()
                 pstmt.setInt(1, (Integer) id);
             }
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Dao.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     /**
      * Sentença SQL específica para cada tipo de objeto a ser persistido no
@@ -223,9 +220,9 @@ public abstract class Dao<E, K>
      * @return Sentença SQL de consulta de um registro.
      */
     public abstract String obterSentencaLocalizarPorId();
-    
+
     public abstract String obterSentencaLocalizarTodos();
-    
+
     public abstract String obterSentencaMoverParaLixeira();
 
     /**
@@ -235,7 +232,7 @@ public abstract class Dao<E, K>
      * @return Sentença SQl para exclusão.
      */
     public abstract String getDeclaracaoDelete();
-    
+
     /**
      * Monta a declaração SQL com os valores contidos no objeto recebido.
      *
@@ -245,16 +242,16 @@ public abstract class Dao<E, K>
     public abstract void montarDeclaracao(PreparedStatement pstmt, E e);
 
     public abstract E extrairObjeto(ResultSet resultSet);
-    
+
     public boolean moverParaLixeira(E e) {
-             
-              // Recupera a identidade (chave primária) do objeto a ser excluído
+
+        // Recupera a identidade (chave primária) do objeto a ser excluído
         Long id = ((Entidade) e).getId();
 
         // Se há uma identidade válida...
         if (id != null && id != 0) {
             // ... tenta preparar uma sentença SQL para a conexão já estabelecida
-            try (PreparedStatement pstmt
+            try ( PreparedStatement pstmt
                     = ConexaoBd.getConexao().prepareStatement(
                             // Sentença SQL para exclusão de registros
                             obterSentencaMoverParaLixeira())) {
@@ -274,10 +271,7 @@ public abstract class Dao<E, K>
         }
 
         return true;
-             
-    }
-    
-    
 
+    }
 
 }

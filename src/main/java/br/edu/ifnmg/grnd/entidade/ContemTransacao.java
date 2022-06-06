@@ -5,11 +5,13 @@
 package br.edu.ifnmg.grnd.entidade;
 
 /**
- *
+ * Entidade que representa a associação entre
+ * Inventario e Transacao;
+ * 
  * @author gusta
  */
 public class ContemTransacao {
-    
+
     private Long inventarioID;
     private Long transacaoID;
 
@@ -41,8 +43,5 @@ public class ContemTransacao {
     public String toString() {
         return "ContemTransacao{" + "inventarioID=" + inventarioID + ", transacaoID=" + transacaoID + '}';
     }
-    
-    
-    
-    
+
 }
