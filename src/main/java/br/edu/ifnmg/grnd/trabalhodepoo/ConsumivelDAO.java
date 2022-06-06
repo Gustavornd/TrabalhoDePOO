@@ -14,34 +14,34 @@ import java.util.logging.Logger;
  *
  * @author gusta
  */
-public class ArmaduraDAO extends Dao <Armadura, Long>{
-     @Override
+public class ConsumivelDAO extends Dao <Consumivel, Long>{
+       @Override
 	public String obterSentencaInsert() {
-		return "insert into armadura(tipo, defesa, idItemGeral)  values (?, ?, ?);";
+		return "insert into consumivel(duracao, alcance_effective, alcance_max, idItemGeral) values (?, ?, ?, ?);";
 	}
 
 	@Override
 	public String obterSentencaUpdate() {
-		return "update armadura set tipo = ?, defesa = ?, idItemGeral = ? where id = ?;";
+		return "update consumivel set duracao = ?, alcance_effective = ?, alcance_max = ?, idItemGeral = ? where id = ?;";
 	}
 
 	@Override
 	 public String obterSentencaLocalizarPorId() {
-		return "select id, tipo, defesa, idItemGeral from armadura where id = ?;";
+		return "select id, duracao, alcance_effective, alcance_max, idItemGeral from consumivel where id = ?;";
 	 }
 
 	@Override
 	public String obterSentencaLocalizarTodos() {
-		return "select id, tipo, defesa, idItemGeral from armadura where excluido = false;";
+		return "select id, duracao, alcance_effective, alcance_max, idItemGeral from consumivel where excluido = false;";
 	 }
     
-    
-	@Override
-	public void montarDeclaracao(PreparedStatement pstmt, Armadura e) {
+                  @Override
+	public void montarDeclaracao(PreparedStatement pstmt, Consumivel e) {
 		try {
-		    pstmt.setString(1, e.getTipo());
-		    pstmt.setInt(2, e.getDefesa());
-		    pstmt.setLong(3, new ItemGeralDAO().salvar(e) );
+                                        pstmt.setInt(1, e.getDuracao());
+		    pstmt.setInt(2, e.getAlcance().get(0));
+		    pstmt.setInt(3, e.getAlcance().get(1));
+		    pstmt.setLong(4, new ItemGeralDAO().salvar(e) );
 
 		    if (e.getId() != null && e.getId() != 0) {
 			pstmt.setLong(7, e.getId());
@@ -54,12 +54,12 @@ public class ArmaduraDAO extends Dao <Armadura, Long>{
 
 
 	    @Override
-	    public Armadura extrairObjeto(ResultSet resultSet) {
-		Armadura e = new Armadura();
+	    public Consumivel extrairObjeto(ResultSet resultSet) {
+		Consumivel e = new Consumivel();
 
 		try {
-                                                        e.setTipo(resultSet.getString("tipo"));
-                                                        e.setDefesa(resultSet.getInt("defesa"));
+                                                        e.setDuracao(resultSet.getInt("duracao"));
+                                                        e.setAlcance(resultSet.getInt("alcance_effective"), resultSet.getInt("alcance_max"));
                                                         ItemGeral aux =  new ItemGeralDAO().localizarPorId(resultSet.getLong("idItemGeral"));
                                                         e.setDescricao(aux.getDescricao());
                                                         e.setNome(aux.getNome());

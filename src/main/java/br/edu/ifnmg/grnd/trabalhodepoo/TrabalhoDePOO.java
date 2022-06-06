@@ -14,11 +14,10 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 public class TrabalhoDePOO {
 
     public static void main(String[] args) {
-	Arma arm1 = new ArmaDAO().localizarPorId(2L);
-                  Inventario inv1 = new Inventario();
-                  inv1.addItens(arm1);
+	Transacao trans = new TransacaoDAO().localizarPorId(1L);
+                    System.out.println(trans.toString());
                   
-                  inv1.listarItens();
+                  
         
                    
        
