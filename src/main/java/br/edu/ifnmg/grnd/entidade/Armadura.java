@@ -5,7 +5,8 @@
 package br.edu.ifnmg.grnd.entidade;
 
 /**
- *
+ * Entidade que implementa uma subclasse de ItemGeral;
+ * 
  * @author gusta
  */
 public class Armadura extends ItemGeral {

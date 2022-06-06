@@ -13,6 +13,9 @@ import java.util.logging.Logger;
 
 /**
  *
+ * Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
+ * 
  * @author gusta
  */
 public class ItemGeralDAO extends Dao<ItemGeral, Long> {

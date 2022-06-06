@@ -7,7 +7,8 @@ package br.edu.ifnmg.grnd.entidade;
 import java.util.ArrayList;
 
 /**
- *
+ * Entidade que implementa uma subclasse de ItemGeral;
+ * 
  * @author gusta
  */
 public class Arma extends ItemGeral {

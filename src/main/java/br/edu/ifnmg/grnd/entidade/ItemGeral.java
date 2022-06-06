@@ -5,7 +5,8 @@
 package br.edu.ifnmg.grnd.entidade;
 
 /**
- *
+ * Entidade que representa um item geral a ser adicionando no inventario.
+ * 
  * @author gusta
  */
 public class ItemGeral extends Entidade {

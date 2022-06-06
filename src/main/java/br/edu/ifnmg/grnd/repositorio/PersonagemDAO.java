@@ -1,6 +1,8 @@
 package br.edu.ifnmg.grnd.repositorio;
 
 /*
+ *  Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
 Autor: Friedrich Naum
  */
 import br.edu.ifnmg.grnd.entidade.Inventario;
