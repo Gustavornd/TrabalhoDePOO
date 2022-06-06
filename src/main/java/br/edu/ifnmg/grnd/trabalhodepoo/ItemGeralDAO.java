@@ -45,7 +45,7 @@ public class ItemGeralDAO extends Dao <ItemGeral, Long> {
 		    pstmt.setString(3, e.getNome());
 		    pstmt.setInt(4, e.getQuantidade());
 		    pstmt.setString(5, e.getDescricao());
-		    pstmt.setBoolean(6, false);
+		    pstmt.setBoolean(6, e.getEquipado());
 
 		    if (e.getId() != null && e.getId() != 0) {
 			pstmt.setLong(7, e.getId());

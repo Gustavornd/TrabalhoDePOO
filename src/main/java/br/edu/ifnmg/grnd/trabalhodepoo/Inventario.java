@@ -46,6 +46,7 @@ public class Inventario extends Entidade {
 
     public void addItens(ItemGeral aux) {
         this.listaItens.add(aux);
+        this.totalitens = this.listaItens.size();
     }
 
     public String listarTrans() {
@@ -64,7 +65,7 @@ public class Inventario extends Entidade {
 
     public ItemGeral buscarItem(String a) {
         for (int i = 0; i < listaItens.size(); i++) {
-            if (listaItens.get(i).getNome() == a) {
+            if (listaItens.get(i).getNome().equals(a) ) {
                 return listaItens.get(i);
             }
         }
@@ -77,4 +78,12 @@ public class Inventario extends Entidade {
 
     }
 
+    @Override
+    public String toString() {
+        return "Inventario{" + "totalitens=" + totalitens + '}';
+    }
+    
+    
+
 }
+

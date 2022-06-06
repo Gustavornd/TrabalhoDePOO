@@ -52,10 +52,10 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
     public void montarDeclaracao(PreparedStatement pstmt, Personagem e) {
         try {
             pstmt.setString(1, e.getNome());
-            pstmt.setFloat(2, e.getLimPeso());
-            pstmt.setFloat(3, e.getDinheiro());
-            pstmt.setInt(4,e.getCa());
-            pstmt.setObject(5, e.getInventario());
+            pstmt.setDouble(2, e.getLimPeso());
+            pstmt.setDouble(3, e.getDinheiro());
+            pstmt.setInt(4, e.getCa());
+            pstmt.setLong(5, new InventarioDAO().salvar(e.getInventario()));
 
             if (e.getId() != null && e.getId() != 0) {
                 pstmt.setLong(6, e.getId());
@@ -73,10 +73,12 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
         try {
             pr.setId(resultSet.getLong("id"));
             pr.setNome(resultSet.getString("nome"));
-            pr.setLimPeso(resultSet.getFloat("limPeso"));
-            pr.setDinheiro(resultSet.getFloat("dinheiro"));
+            pr.setLimPeso(resultSet.getDouble("limPeso"));
+            pr.setDinheiro(resultSet.getDouble("dinheiro"));
             pr.setCa(resultSet.getInt("ca"));
-            pr.setInventario(resultSet.getObject("inventario", Inventario.class));
+            Inventario inv = new InventarioDAO().localizarPorId(resultSet.getLong("inventario"));
+            pr.setInventario(inv);
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(PersonagemDAO.class.getName()).log(Level.SEVERE, null, ex);

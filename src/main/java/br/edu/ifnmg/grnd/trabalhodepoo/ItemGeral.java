@@ -27,7 +27,6 @@ public class ItemGeral extends Entidade{
 		this.quantidade = 0;
 		this.descricao = null;
 		this.nome = null;
-		this.equipado = false;
 	}
 
 	public ItemGeral(Double peso, Double preco, Integer quantidade, String descricao, String nome, Boolean equipado) {

@@ -8,8 +8,8 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 public class Personagem extends Entidade{
     
     private String nome;
-    private Float limPeso;
-    private Float dinheiro;
+    private Double limPeso;
+    private Double dinheiro;
     private Integer ca;
     private Inventario inventario;
 
@@ -19,7 +19,7 @@ public class Personagem extends Entidade{
     {
         
     }
-    public Personagem(String nome, Float limPeso, Float dinheiro, Integer ca, Inventario inventario) {
+    public Personagem(String nome, Double limPeso, Double dinheiro, Integer ca, Inventario inventario) {
         this.nome = nome;
         this.limPeso = limPeso;
         this.dinheiro = dinheiro;
@@ -31,19 +31,19 @@ public class Personagem extends Entidade{
 
     //<editor-fold defaultstate="collapsed" desc="Getterss And Settters">
     
-    public Float getLimPeso() {
+    public Double getLimPeso() {
         return limPeso;
     }
 
-    public void setLimPeso(Float limPeso) {
+    public void setLimPeso(Double limPeso) {
         this.limPeso = limPeso;
     }
 
-    public Float getDinheiro() {
+    public Double getDinheiro() {
         return dinheiro;
     }
 
-    public void setDinheiro(Float dinheiro) {
+    public void setDinheiro(Double dinheiro) {
         this.dinheiro = dinheiro;
     }
 
