@@ -9,7 +9,8 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 import java.util.ArrayList;
 
 /**
- *
+ * Entidade que representa uma Arma.
+ * 
  * @author gusta
  */
 public class Arma extends ItemGeral {

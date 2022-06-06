@@ -1,6 +1,9 @@
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
 /*
+* Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+* dados.
+*
 Autor: Friedrich Naum
  */
 import java.sql.PreparedStatement;
@@ -41,12 +44,11 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
     public String obterSentencaLocalizarTodos() {
         return "select id, nome, limPeso, dinheiro, ca, inventario from personagem where excluido = false;";
     }
-    
+
     @Override
     public String getDeclaracaoDelete() {
         return "delete from personagem where id = ?";
     }
-   
 
     /**
      * Substitui elementos variáveis na SQL preparada a partir do objeto de
@@ -55,7 +57,6 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
      * @param pstmt Consulta preparada com valores ausentes
      * @param e Objeto com dados relevantes para a consulta
      */
-    
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, Personagem e) {
         try {
@@ -104,7 +105,5 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
     public String obterSentencaMoverParaLixeira() {
         return "update personagem set excluido = TRUE where id = ?;";
     }
-
-
 
 }

@@ -8,7 +8,8 @@ package br.edu.ifnmg.grnd.trabalhodepoo;
 
 
 /**
- *
+ * Entidade que representa um Item Geral.
+ * 
  * @author gusta
  */
 public class ItemGeral extends Entidade{

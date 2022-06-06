@@ -11,11 +11,25 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * Operações concretas que suportam os procedimentos CRUD em objetos em banco de
+ * dados.
  *
  * @author gusta
  */
 public class ItemGeralDAO extends Dao<ItemGeral, Long> {
 
+    /*
+    CREATE TABLE itemgeral (
+        `id` int NOT NULL AUTO_INCREMENT,
+        `peso` float,
+        `preco` float,
+        `nome` varchar(200),
+        `quantidade` int,
+        `descricao` text,
+        `equipado` boolean DEFAULT FALSE,
+        PRIMARY KEY (`id`),
+    ) ENGINE=MyISAM DEFAULT CHARSET=latin1
+-- */
     @Override
     public String obterSentencaInsert() {
         return "insert into itemgeral (peso, preco, nome, quantidade, descricao, equipado) values (?, ?, ?, ?, ?, ?);";
@@ -46,6 +60,13 @@ public class ItemGeralDAO extends Dao<ItemGeral, Long> {
         return "update itemgeral set excluido = TRUE where id = ?;";
     }
 
+    /**
+     * Substitui elementos variáveis na SQL preparada a partir do objeto de
+     * referência recebido
+     *
+     * @param pstmt Consulta preparada com valores ausentes
+     * @param e Objeto com dados relevantes para a consulta
+     */
     @Override
     public void montarDeclaracao(PreparedStatement pstmt, ItemGeral e) {
         try {
@@ -65,6 +86,12 @@ public class ItemGeralDAO extends Dao<ItemGeral, Long> {
         }
     }
 
+    /**
+     * Extrai um objeto ItemGeral do resultado gerado pela consulta
+     *
+     * @param resultSet Registro recuperado do banco de dados
+     * @return ItemGeral equivalente ao registro recebido
+     */
     @Override
     public ItemGeral extrairObjeto(ResultSet resultSet) {
         ItemGeral ig = new ItemGeral();

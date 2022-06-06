@@ -5,7 +5,8 @@
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
 /**
- *
+ * Entidade que representa uma Armadura.
+ * 
  * @author gusta
  */
 public class Armadura extends ItemGeral {
