@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2022 gusta
+ * Copyright (C) 2022 Friedrich Naum Espindola Loiola Costa
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -14,22 +14,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-package br.edu.ifnmg.grnd.repositorio;
+package br.edu.ifnmg.grnd.entidade;
 
 /**
- * Definição de métodos obrigatórios nas classes DAO. autores: Gustavo, Lucas e
- * Naum
+ * @author Gustavo Rafael Nunes Durães
+ * @author Lucas Flávio Gabrich Marinho
+ * @author Friedrich Naum Espindola Loiola Costa
  */
-public interface IDao<E, K> {
-
-    /**
-     * Operação de salvamento de entidade no banco de dados
-     *
-     * @param e Entidade a ser salva
-     * @return Chave primária da entidade salva
-     */
-    public K salvar(E e);
-
-    public Boolean excluir(E o);
+public class Teste {
+    
 }
