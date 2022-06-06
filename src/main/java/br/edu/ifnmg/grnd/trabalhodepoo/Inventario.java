@@ -37,6 +37,7 @@ public class Inventario extends Entidade {
         return listaTrans;
     }
 
+    // Adiciona uma transacao
     public void addTrans(Transacao aux) {
         this.listaTrans.add(aux);
     }
@@ -45,11 +46,13 @@ public class Inventario extends Entidade {
         return listaItens;
     }
 
+    // Adiciona um ItemGeral
     public void addItens(ItemGeral aux) {
         this.listaItens.add(aux);
         this.totalitens = this.listaItens.size();
     }
 
+    // Lista as Transacoes
     public String listarTrans() {
         for (int i = 0; i < listaTrans.size(); i++) {
             System.out.println(listaTrans.get(i).toString());
@@ -57,12 +60,14 @@ public class Inventario extends Entidade {
         return null;
     }
 
+    // Lista os ItensGerais
     public String listarItens() {
         for (int i = 0; i < listaItens.size(); i++) {
             System.out.println(listaItens.get(i).toString());
         }
         return null;
     }
+    // Realiza a busca de um ItemGeral
 
     public ItemGeral buscarItem(String a) {
         for (int i = 0; i < listaItens.size(); i++) {
@@ -73,6 +78,7 @@ public class Inventario extends Entidade {
         System.out.println("Item nao encontrado.");
         return null;
     }
+    // Remove um ItemGeral 
 
     public void removeItem(String a) {
         listaItens.remove(buscarItem(a));

@@ -1,4 +1,3 @@
-
 package br.edu.ifnmg.grnd.trabalhodepoo;
 
 import java.sql.Connection;
@@ -7,50 +6,75 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
+/**
+ * Tratamento da conexão com o banco de dados.
+ *
+ */
 public class ConexaoBd {
 
-	
-	private static Connection conexao;
+    // Retém a conexão estabelecida com o banco de dados durante a operação do sistema.
+    private static Connection conexao;
 
-	
-	public static final String URL;
+    /**
+     * URL de conexão com o banco de dados
+     * (protocolo/sgbd/ip/porta/banco/parâmetros).
+     */
+    public static final String URL;
 
-	
-	private static final String USUARIO;
+    // Usuário para acesso ao banco de dados.
+    private static final String USUARIO;
 
-	
-	private static final String SENHA;
+    // Senha para acesso ao banco de dados.
+    private static final String SENHA;
 
-	
-	static{
-                           URL = "jdbc:mysql://127.0.0.1:3306/rpginventario"
-                                        + "?useUnicode=true"
-                                        + "&useJDBCCompliantTimezoneShift=true"
-                                        + "&serverTimezone=UTC"
-                                        + "&autoReconnect=true";
-                           USUARIO = "root";
-                           SENHA = "";
-	}
+    // Inicialização de atributos estáticos.
+    static {
+        // Servidor Local
+        URL = "jdbc:mysql://127.0.0.1:3306/rpginventario"
+                + "?useUnicode=true"
+                + "&useJDBCCompliantTimezoneShift=true"
+                + "&serverTimezone=UTC"
+                + "&autoReconnect=true";
+        USUARIO = "root";
+        SENHA = "";
+    }
 
-	
-	private ConexaoBd() {
-	}
-	
-	public static Connection getConexao() throws SQLException{
-	   
-	    if (conexao == null) {
-		
-		try {
-		    System.out.println(">> Nova conexão estabelecida com o banco de dados");
-		    conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
-		} catch (SQLException ex) {
-		    System.out.println("A conexao falhou!!!");
-		    Logger.getLogger(ConexaoBd.class.getName()).log(Level.SEVERE, null, ex);
+    //<editor-fold defaultstate="collapsed" desc="Construtor privado">
+    /*
+     * Construtor privado para forçar acesso à conexão pelo membro estático
+     * getConexao() sem que seja requerida a  geração de novos objetos 
+     * ConexaoBd ConexaoBd.
+     */
+    private ConexaoBd() {
+    }
+    //</editor-fold>
 
-		}
-	    }
+    /**
+     * Estabelece e gera a retenção da conexão com o banco de dados.
+     *
+     * @return Conexão com o banco de dados.
+     */
+    public static Connection getConexao() throws SQLException {
 
-	    return conexao;
-	}
+        // Se não há uma conexão estabelecida...
+        if (conexao == null) {
+
+            // ... tenta ...
+            try {
+                System.out.println(">> Nova conexão estabelecida com o banco de dados");
+                // ... estabelecer e reter a conexão a partir da URL, 
+                // do usuário e da senha fornecidos
+                conexao = DriverManager.getConnection(URL, USUARIO, SENHA);
+            } catch (SQLException ex) {
+                // TODO Rever procedimento e encerrar o programa em caso de falha
+                // Registra falha
+                System.out.println("A conexao falhou!!!");
+                Logger.getLogger(ConexaoBd.class.getName()).log(Level.SEVERE, null, ex);
+                // System.exit(-1);
+            }
+        }
+
+        // Devolve a conexão estabelecida
+        return conexao;
+    }
 }
