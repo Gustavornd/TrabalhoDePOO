@@ -18,6 +18,7 @@
 
 package br.edu.ifnmg.grnd.entidade;
 
+import br.edu.ifnmg.grnd.interfac.AutenticarJF;
 import br.edu.ifnmg.grnd.repositorio.TransacaoDAO;
 import br.edu.ifnmg.grnd.repositorio.ArmaDAO;
 import br.edu.ifnmg.grnd.repositorio.ArmaduraDAO;
@@ -27,6 +28,7 @@ import br.edu.ifnmg.grnd.repositorio.ContemTransacaoDAO;
 import br.edu.ifnmg.grnd.repositorio.InventarioDAO;
 import br.edu.ifnmg.grnd.repositorio.ItemGeralDAO;
 import br.edu.ifnmg.grnd.repositorio.PersonagemDAO;
+import br.edu.ifnmg.grnd.repositorio.UsuarioDAO;
 
 /**
  * Classe de implementação do médoto main();
@@ -38,8 +40,26 @@ import br.edu.ifnmg.grnd.repositorio.PersonagemDAO;
 public class TrabalhoDePOO {
 
     public static void main(String[] args) {
-        Transacao trans1 = new Transacao(-300.00, "Tiltei e comprei o puteiro");
+        /*Transacao trans1 = new Transacao(-300.00, "Tiltei e comprei o puteiro");
         new TransacaoDAO().salvar(trans1);
-
+        */
+         Usuario u = new Usuario();
+         UsuarioDAO user = new UsuarioDAO();
+        u.setNomeSistema("rpginventario");
+        u.setSenha("vongola");
+        u.setAdministrador(Boolean.TRUE);
+        
+        user.salvar(u);
+        
+        Usuario recuperado = new UsuarioDAO().autenticar(u);
+        
+        if(recuperado != null) {
+            System.out.println("Usuário autêntico!");
+        } else {
+            System.out.println("Acesso não autorizado.");
+        }
+        
+        AutenticarJF obj = new AutenticarJF();
+        obj.setVisible(true);
     }
 }

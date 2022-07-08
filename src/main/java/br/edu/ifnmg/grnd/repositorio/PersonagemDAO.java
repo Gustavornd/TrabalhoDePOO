@@ -27,6 +27,7 @@ package br.edu.ifnmg.grnd.repositorio;
  */
 import br.edu.ifnmg.grnd.entidade.Inventario;
 import br.edu.ifnmg.grnd.entidade.Personagem;
+import br.edu.ifnmg.grnd.repositorio.Dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,22 +49,22 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
 -- */
     @Override
     public String obterSentencaInsert() {
-        return "insert into personagem (nome, limPeso, dinheiro, ca, inventario) values (?, ?, ?, ?, ?);";
+        return "insert into personagem (nome, limPeso, dinheiro, ca, inventarioid) values (?, ?, ?, ?, ?);";
     }
 
     @Override
     public String obterSentencaUpdate() {
-        return "update personagem set nome = ?, limPeso = ?, dinheiro = ?, ca = ?, inventario = ? where id = ?;";
+        return "update personagem set nome = ?, limPeso = ?, dinheiro = ?, ca = ?, inventarioid = ? where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarPorId() {
-        return "select id, nome, limPeso, dinheiro, ca, inventario from personagem where id = ?;";
+        return "select id, nome, limPeso, dinheiro, ca, inventarioid from personagem where id = ?;";
     }
 
     @Override
     public String obterSentencaLocalizarTodos() {
-        return "select id, nome, limPeso, dinheiro, ca, inventario from personagem where excluido = false;";
+        return "select id, nome, limPeso, dinheiro, ca, inventarioid from personagem where excluido = false;";
     }
     
     @Override
@@ -87,7 +88,7 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
             pstmt.setDouble(2, e.getLimPeso());
             pstmt.setDouble(3, e.getDinheiro());
             pstmt.setInt(4, e.getCa());
-            pstmt.setLong(5, new InventarioDAO().salvar(e.getInventario()));
+            pstmt.setInt(5, e.getInventario()); //new InventarioDAO().salvar(e.getInventario()));
 
             if (e.getId() != null && e.getId() != 0) {
                 pstmt.setLong(6, e.getId());
@@ -114,8 +115,9 @@ public class PersonagemDAO extends Dao<Personagem, Long> {
             pr.setLimPeso(resultSet.getDouble("limPeso"));
             pr.setDinheiro(resultSet.getDouble("dinheiro"));
             pr.setCa(resultSet.getInt("ca"));
-            Inventario inv = new InventarioDAO().localizarPorId(resultSet.getLong("inventario"));
-            pr.setInventario(inv);
+            pr.setInventario(resultSet.getInt("inventarioid"));
+            //Inventario inv = new InventarioDAO().localizarPorId(resultSet.getLong("inventario"));
+            //pr.setInventario(inv);
 
         } catch (SQLException ex) {
             Logger.getLogger(PersonagemDAO.class.getName()).log(Level.SEVERE, null, ex);
